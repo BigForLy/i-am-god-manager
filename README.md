@@ -41,4 +41,6 @@ Two characters will come to you a day. If there is not enough space in your city
 
 Over time, the city will grow and develop, new events will take place. Improve your city and develop it, Good luck!
 
-*Coming soon.*
+**Coming soon.**
+
+========================
