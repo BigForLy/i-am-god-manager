@@ -4,6 +4,7 @@ Your city and each character will have several characteristics:
 * intellect
 * might
 * the culture
+
 One of these characteristics will be the main one. The main characteristic will determine the character's profession.
 If the main characteristic is intelligence, then the character will choose the profession of a scientist or a medic, if strength is a warrior or a builder, if culture is a priest or minister.
 The rarity of a character determines the level of development of characteristics. The higher the stat, the more benefit it brings to the city.
