@@ -15,15 +15,20 @@ The rarity of a character determines the level of development of characteristics
 The scientist will bring the city science and scientific discoveries.
 
 The medic will bring little science to the city, heal people and create vaccines against diseases that people from outside your city can bring.
+
 The warrior will bring might to the city, defend your city, go on raids and patrol the territory of the city from thieves.
+
 The builder will bring little might and build structures automatically. He will try to build houses to maintain numbers and add new people to the city, buildings for professionals and improve them.
+
 The priest will increase the culture of the city and create religious associations.
+
 The minister will enhance the culture of the city and propose solutions to conflicts in the city and beyond.
 
 Characters have negative characteristics:
 * greed
 * aggression
 * laziness
+
 Greed affects the amount of food consumed.
 Aggression affects conflicts with other people.
 Laziness affects the speed of the work done.
