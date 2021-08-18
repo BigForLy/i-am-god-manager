@@ -7,18 +7,23 @@ Your city and each character will have several characteristics:
 * the culture
 
 One of these characteristics will be the main one. The main characteristic will determine the character's profession.
+
 If the main characteristic is intelligence, then the character will choose the profession of a scientist or a medic, if strength is a warrior or a builder, if culture is a priest or minister.
+
 The rarity of a character determines the level of development of characteristics. The higher the stat, the more benefit it brings to the city.
+
 The scientist will bring the city science and scientific discoveries.
+
 The medic will bring little science to the city, heal people and create vaccines against diseases that people from outside your city can bring.
 The warrior will bring might to the city, defend your city, go on raids and patrol the territory of the city from thieves.
 The builder will bring little might and build structures automatically. He will try to build houses to maintain numbers and add new people to the city, buildings for professionals and improve them.
 The priest will increase the culture of the city and create religious associations.
 The minister will enhance the culture of the city and propose solutions to conflicts in the city and beyond.
+
 Characters have negative characteristics:
-greed
-aggression
-laziness
+* greed
+* aggression
+* laziness
 Greed affects the amount of food consumed.
 Aggression affects conflicts with other people.
 Laziness affects the speed of the work done.
