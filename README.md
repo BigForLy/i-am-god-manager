@@ -38,3 +38,7 @@ Characters have negative characteristics:
 Treat your choice of characters deliberately, your people action will affect the characteristics of your city.
 
 Two characters will come to you a day. If there is not enough space in your city for new residents and you accept a new character, then the weakest character, the same basic characteristics as the newcomer, will leave the city, and the new one will take his place and receive his profession. As soon as you distribute new potential people, the day is over and a new one begins.
+
+Over time, the city will grow and develop, new events will take place. Improve your city and develop it, Good luck!
+
+*Coming soon.*
