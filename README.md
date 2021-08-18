@@ -2,9 +2,9 @@
 I present a game, the gameplay of which is to manage your city. You must choose who to accept into your city and which people will be prohibited from entering your citadel. Each character will be special both visually and in their characteristics. By earning a reputation, your city will attract more deserved and strong characters.
 
 Your city and each character will have several characteristics:
-* intellect
-* might
-* the culture
+* *intellect*
+* *might*
+* *the culture*
 
 One of these characteristics will be the main one. The main characteristic will determine the character's profession.
 
@@ -30,7 +30,11 @@ Characters have negative characteristics:
 * laziness
 
 Greed affects the amount of food consumed.
+
 Aggression affects conflicts with other people.
+
 Laziness affects the speed of the work done.
+
 Treat your choice of characters deliberately, your people action will affect the characteristics of your city.
+
 Two characters will come to you a day. If there is not enough space in your city for new residents and you accept a new character, then the weakest character, the same basic characteristics as the newcomer, will leave the city, and the new one will take his place and receive his profession. As soon as you distribute new potential people, the day is over and a new one begins.
