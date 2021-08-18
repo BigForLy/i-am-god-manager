@@ -1,5 +1,6 @@
 # i-am-god-manager
 I present a game, the gameplay of which is to manage your city. You must choose who to accept into your city and which people will be prohibited from entering your citadel. Each character will be special both visually and in their characteristics. By earning a reputation, your city will attract more deserved and strong characters.
+
 Your city and each character will have several characteristics:
 * intellect
 * might
