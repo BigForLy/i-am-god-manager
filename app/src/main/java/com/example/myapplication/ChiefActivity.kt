@@ -2,9 +2,11 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat.setTranslationX
 import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
@@ -17,11 +19,14 @@ class ChiefActivity : AppCompatActivity() {
     private var dY = 0.0f
     private var startPositionX = 0.0f
     private var startPositionY = 0.0f
+    private var downBorder = 0.0f
     private var heroesManager = HeroesManager()
     private var townManager = TownManager()
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_chief)
 
         setChefActivityButtonListener()
@@ -36,40 +41,33 @@ class ChiefActivity : AppCompatActivity() {
         imageViewComponent.setOnTouchListener(object: View.OnTouchListener{
             override fun onTouch(v: View, event: MotionEvent): Boolean {
                 val resourcesWidth = resources.displayMetrics.widthPixels
+                val resourcesHeight = resources.displayMetrics.heightPixels - downBorder
                 when (event.action) {
                     ACTION_DOWN -> {
-                        dX = event.x
-                        dY = event.y
+                        dX = event.rawX - v.x
+                        dY = event.rawY - v.y
                         startPositionX = v.x
                         startPositionY = v.y
                         return true
                     }
                     ACTION_MOVE -> {
-                        val nowX : Float = if (v.x < 0) 0.0f else event.rawX - dX
-                        println(v.x.toString() + " " + nowX)
-                        when {
-                            (event.rawX - dX >= 0.0f || v.x > 0.0f) && (event.rawX + (v.width - dX) <= resourcesWidth || (v.x + v.width) < resourcesWidth) -> {
-                                v.animate()
-                                    .x(event.rawX - dX)
-                                    .y(event.rawY - dY)
-                                    .setDuration(0)
-                                    .start()
+                        val dXAnimate =
+                            when {
+                                event.rawX - dX <= 0.0f -> 0.0f
+                                event.rawX - dX + v.width >= resourcesWidth -> (resourcesWidth - v.width).toFloat()
+                                else -> event.rawX - dX
                             }
-                            v.x < 0 -> {
-                                v.animate()
-                                    .x(0.0f)
-                                    .y(event.rawY - dY)
-                                    .setDuration(0)
-                                    .start()
+                        val dYAnimate =
+                            when {
+                                event.rawY - dY <= 0.0f -> 0.0f
+                                event.rawY - dY + v.height >= resourcesHeight -> (resourcesHeight - v.height).toFloat()
+                                else -> event.rawY - dY
                             }
-                            v.x + v.width > resourcesWidth -> {
-                                v.animate()
-                                    .x((resourcesWidth).toFloat()-v.width)
-                                    .y(event.rawY - dY)
-                                    .setDuration(0)
-                                    .start()
-                            }
-                        }
+                        v.animate()
+                            .x(dXAnimate)
+                            .y(dYAnimate)
+                            .setDuration(0)
+                            .start()
                         return true
                     }
                     ACTION_UP -> {
