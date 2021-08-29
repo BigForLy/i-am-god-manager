@@ -5,13 +5,13 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat.setTranslationX
 import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 
 
 class ChiefActivity : AppCompatActivity() {
@@ -20,8 +20,10 @@ class ChiefActivity : AppCompatActivity() {
     private var startPositionX = 0.0f
     private var startPositionY = 0.0f
     private var downBorder = 0.0f
-    private var heroesManager = HeroesManager()
+
+    private var heroesManager : HeroesManager? = null
     private var townManager = TownManager()
+    private var activeHero : Heroes = Heroes()
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,8 +33,11 @@ class ChiefActivity : AppCompatActivity() {
 
         setChefActivityButtonListener()
         setOnTouchImageListener()
-    }
 
+        val workingBitmap = BitmapFactory.decodeResource(resources, R.drawable.hero_test)
+        val mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true)
+        heroesManager = HeroesManager(mutableBitmap)
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setOnTouchImageListener() {
@@ -60,7 +65,7 @@ class ChiefActivity : AppCompatActivity() {
                         val dYAnimate =
                             when {
                                 event.rawY - dY <= 0.0f -> 0.0f
-                                event.rawY - dY + v.height >= resourcesHeight -> (resourcesHeight - v.height).toFloat()
+                                event.rawY - dY + v.height >= resourcesHeight -> resourcesHeight - v.height
                                 else -> event.rawY - dY
                             }
                         v.animate()
@@ -72,8 +77,13 @@ class ChiefActivity : AppCompatActivity() {
                     }
                     ACTION_UP -> {
                         when {
-                            v.x > startPositionX + resourcesWidth/7 -> {println("right")}
-                            v.x < startPositionX - resourcesWidth/7 -> {println("left")}
+                            v.x < startPositionX - resourcesWidth/7 -> {
+                                println("left")
+                                createNewHero()
+                            }
+                            v.x > startPositionX + resourcesWidth/7 -> {
+                                println("right")
+                            }
                            else -> {println("none")}
                         }
                         v.animate()
@@ -105,17 +115,28 @@ class ChiefActivity : AppCompatActivity() {
         val button2 = findViewById<Button>(R.id.button2)
 
         button2.setOnClickListener {
-            val imageView = findViewById<ImageView>(R.id.imageView2)
-            imageView.setImageDrawable(ContextCompat.getDrawable(
-                applicationContext,
-                R.drawable.hero_test2
-            ))
-
-            heroesManager.createHero()
-            println("aaa")
-            for(i in 1..heroesManager.pulHeroes.size){
-                println(heroesManager.pulHeroes[i]?.rarity + " " + heroesManager.pulHeroes[i]?.ratingHero)
-            }
+//            setUpdateNewImage()
+            createNewHero()
         }
+    }
+
+    private fun createNewHero(){
+        val imageView = findViewById<ImageView>(R.id.imageView2)
+        val hero = heroesManager?.newHero()
+        hero?.also { activeHero = it }
+        imageView.setImageBitmap(hero?.imageHero)
+    }
+
+    private fun setUpdateNewImage() {
+        val imageView = findViewById<ImageView>(R.id.imageView2)
+
+        val workingBitmap2 = BitmapFactory.decodeResource(resources, R.drawable.hero_test2)
+        val mutableBitmap2 = workingBitmap2.copy(Bitmap.Config.ARGB_8888, true)
+        val c = ImageHeroDrawable()
+        imageView.setImageBitmap(c.create(mutableBitmap2, Heroes()))
+
+//        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.hero_test2);
+//        imageView.setImageBitmap(bitmap)
+
     }
 }

@@ -1,11 +1,13 @@
 package com.example.myapplication
 
-class HeroesManager {
-    var pulHeroes: MutableMap<Int, Heroes> = mutableMapOf()
+import android.graphics.Bitmap
 
-    fun createHero(){
-        val newHero = Heroes()
-        pulHeroes[pulHeroes.size+1] = newHero
+class HeroesManager(private val mutableBitmap: Bitmap) {
+    private val imageHeroDrawable = ImageHeroDrawable()
+
+    fun newHero(): Heroes{
+        val hero = Heroes()
+        hero.imageHero = imageHeroDrawable.create(mutableBitmap, hero)
+        return hero
     }
-
 }
