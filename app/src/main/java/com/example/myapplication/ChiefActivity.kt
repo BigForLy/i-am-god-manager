@@ -111,13 +111,6 @@ class ChiefActivity : AppCompatActivity() {
             val backToMainActivity = Intent(this, MainActivity::class.java)
             startActivity(backToMainActivity)
         }
-
-        val button2 = findViewById<Button>(R.id.button2)
-
-        button2.setOnClickListener {
-//            setUpdateNewImage()
-            createNewHero()
-        }
     }
 
     private fun createNewHero(){
