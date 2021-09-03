@@ -111,6 +111,12 @@ class ChiefActivity : AppCompatActivity() {
             val backToMainActivity = Intent(this, MainActivity::class.java)
             startActivity(backToMainActivity)
         }
+
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener {
+            val backToMainActivity = Intent(this, MainActivity2::class.java)
+            startActivity(backToMainActivity)
+        }
     }
 
     private fun createNewHero(){
@@ -120,6 +126,7 @@ class ChiefActivity : AppCompatActivity() {
         imageView.setImageBitmap(hero?.imageHero)
     }
 
+    // old ImageUpdate
     private fun setUpdateNewImage() {
         val imageView = findViewById<ImageView>(R.id.imageView2)
 
