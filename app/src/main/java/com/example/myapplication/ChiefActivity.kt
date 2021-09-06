@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.view.WindowManager
 
 
 class ChiefActivity : AppCompatActivity() {
@@ -37,40 +38,10 @@ class ChiefActivity : AppCompatActivity() {
         val workingBitmap = BitmapFactory.decodeResource(resources, R.drawable.hero_test)
         val mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true)
         heroesManager = HeroesManager(mutableBitmap)
-    }
 
-//    override fun onStart() {
-//        super.onStart()
-//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
-//                // Set the content to appear under the system bars so that the
-//                // content doesn't resize when the system bars hide and show.
-//                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                // Hide the nav bar and status bar
-//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                or View.SYSTEM_UI_FLAG_FULLSCREEN)
-//    }
-/*
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) hideSystemUI()
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        supportActionBar?.hide()
     }
-
-    private fun hideSystemUI() {
-        // Enables regular immersive mode.
-        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
-        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
-                // Set the content to appear under the system bars so that the
-                // content doesn't resize when the system bars hide and show.
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                // Hide the nav bar and status bar
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
-    }*/
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setOnTouchImageListener() {
