@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.view.WindowManager
 
 
 class ChiefActivity : AppCompatActivity() {
@@ -38,9 +37,6 @@ class ChiefActivity : AppCompatActivity() {
         val workingBitmap = BitmapFactory.decodeResource(resources, R.drawable.hero_test)
         val mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true)
         heroesManager = HeroesManager(mutableBitmap)
-
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        supportActionBar?.hide()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -115,12 +111,6 @@ class ChiefActivity : AppCompatActivity() {
             val backToMainActivity = Intent(this, MainActivity::class.java)
             startActivity(backToMainActivity)
         }
-
-        val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener {
-            val backToMainActivity = Intent(this, MainActivity2::class.java)
-            startActivity(backToMainActivity)
-        }
     }
 
     private fun createNewHero(){
@@ -130,7 +120,6 @@ class ChiefActivity : AppCompatActivity() {
         imageView.setImageBitmap(hero?.imageHero)
     }
 
-    // old ImageUpdate
     private fun setUpdateNewImage() {
         val imageView = findViewById<ImageView>(R.id.imageView2)
 
