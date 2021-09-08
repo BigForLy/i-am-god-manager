@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.home
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.ViewModelProvider
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -17,6 +18,9 @@ import com.example.myapplication.TownManager
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
+
+    private lateinit var homeViewModel: HomeViewModel
+
     private var dX = 0.0f
     private var dY = 0.0f
     private var startPositionX = 0.0f
@@ -38,6 +42,12 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        homeViewModel =
+            ViewModelProvider(
+                this,
+                ViewModelProvider.NewInstanceFactory()
+            ).get(HomeViewModel::class.java)
+        println(homeViewModel.text.value)
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         setOnTouchImageListener(view.imageView)
