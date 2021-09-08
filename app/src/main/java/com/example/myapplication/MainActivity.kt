@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startSecondActivity (){
-        val chefIntent = Intent(this, ChiefActivity::class.java)
+//        val chefIntent = Intent(this, ChiefActivity::class.java)
+        val chefIntent = Intent(this, FrameManager::class.java)
         startActivity(chefIntent)
     }
 
