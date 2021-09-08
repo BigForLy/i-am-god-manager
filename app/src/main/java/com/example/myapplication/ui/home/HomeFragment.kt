@@ -48,6 +48,7 @@ class HomeFragment : Fragment() {
                 ViewModelProvider.NewInstanceFactory()
             ).get(HomeViewModel::class.java)
         println(homeViewModel.text.value)
+        println(homeViewModel.next)
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         setOnTouchImageListener(view.imageView)
