@@ -3,11 +3,10 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.internal.BottomNavigationItemView
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import com.example.myapplication.ui.Home.HomeFragment
-import com.example.myapplication.ui.Town.TownFragment
+import com.example.myapplication.ui.home.HomeFragment
+import com.example.myapplication.ui.town.TownFragment
 
 class FrameManager : AppCompatActivity() {
     private val homeFragment = HomeFragment()
